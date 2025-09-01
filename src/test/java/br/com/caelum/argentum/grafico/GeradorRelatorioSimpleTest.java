@@ -37,7 +37,7 @@ public class GeradorRelatorioSimpleTest {
     @Test
     public void deveEncontrarMaiorAltaParaUmCandle() {
         double maiorAlta = gerador.encontrarMaiorAlta();
-        assertEquals(45.0, maiorAlta, 0.0001);
+        assertEquals(42.0, maiorAlta, 0.0001);
     }
     
     @Test

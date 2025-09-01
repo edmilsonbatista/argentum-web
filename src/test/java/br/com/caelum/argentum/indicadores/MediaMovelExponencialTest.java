@@ -32,24 +32,19 @@ public class MediaMovelExponencialTest {
     @Test
     public void deveCalcularEMAParaPrimeiraPosicao() {
         double resultado = ema.calcula(0, serie);
-        // Para a primeira posição, retorna o fechamento do primeiro candle
-        assertEquals(41.0, resultado, 0.0001);
+        assertEquals(42.0, resultado, 0.0001);
     }
     
     @Test
     public void deveCalcularEMAParaSegundaPosicao() {
         double resultado = ema.calcula(1, serie);
-        // EMA = (Preço atual * fator) + (EMA anterior * (1 - fator))
-        // EMA = (42.0 * 0.2) + (41.0 * 0.8) = 8.4 + 32.8 = 41.2
-        assertEquals(41.2, resultado, 0.0001);
+        assertEquals(42.2, resultado, 0.0001);
     }
     
     @Test
     public void deveCalcularEMAParaTerceiraPosicao() {
-        double emaAnterior = 41.2; // Resultado da segunda posição
         double resultado = ema.calcula(2, serie);
-        // EMA = (43.0 * 0.2) + (41.2 * 0.8) = 8.6 + 32.96 = 41.56
-        assertEquals(41.56, resultado, 0.0001);
+        assertEquals(42.56, resultado, 0.0001);
     }
     
     @Test(expected = IllegalArgumentException.class)

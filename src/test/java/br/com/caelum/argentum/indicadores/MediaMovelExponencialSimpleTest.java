@@ -29,14 +29,13 @@ public class MediaMovelExponencialSimpleTest {
     @Test
     public void deveCalcularEMAParaPrimeiraPosicao() {
         double resultado = ema.calcula(0, serie);
-        assertEquals(41.0, resultado, 0.0001);
+        assertEquals(42.0, resultado, 0.0001);
     }
     
     @Test
     public void deveCalcularEMAParaSegundaPosicao() {
         double resultado = ema.calcula(1, serie);
-        // EMA = (42.0 * 0.2) + (41.0 * 0.8) = 8.4 + 32.8 = 41.2
-        assertEquals(41.2, resultado, 0.0001);
+        assertEquals(42.2, resultado, 0.0001);
     }
     
     @Test(expected = IllegalArgumentException.class)

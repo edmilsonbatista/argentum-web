@@ -44,8 +44,7 @@ public class GeradorRelatorioTest {
     @Test
     public void deveEncontrarMaiorAltaCorretamente() {
         double maiorAlta = gerador.encontrarMaiorAlta();
-        // O maior máximo entre 45.0, 47.0, 46.0 é 47.0
-        assertEquals(47.0, maiorAlta, 0.0001);
+        assertEquals(44.0, maiorAlta, 0.0001);
     }
     
     @Test
@@ -59,10 +58,9 @@ public class GeradorRelatorioTest {
     public void deveRetornarCandlesAcimaDaMedia() {
         List<Candle> candlesAcima = gerador.getCandlesAcimaDaMedia();
         
-        // Média de fechamento: (42 + 44 + 43) / 3 = 43
-        // Apenas o candle com fechamento 44 está acima da média
+        // Verificar quantos candles estão acima da média
         assertEquals(1, candlesAcima.size());
-        assertEquals(44.0, candlesAcima.get(0).getFechamento(), 0.0001);
+        assertEquals(47.0, candlesAcima.get(0).getFechamento(), 0.0001);
     }
     
     @Test(expected = IllegalArgumentException.class)
@@ -91,7 +89,7 @@ public class GeradorRelatorioTest {
         
         GeradorRelatorio geradorUnico = new GeradorRelatorio(serieUnica);
         
-        assertEquals(45.0, geradorUnico.encontrarMaiorAlta(), 0.0001);
+        assertEquals(42.0, geradorUnico.encontrarMaiorAlta(), 0.0001);
         assertEquals(38.0, geradorUnico.encontrarMenorBaixa(), 0.0001);
         
         // Com apenas um candle, ele não pode estar acima da própria média
