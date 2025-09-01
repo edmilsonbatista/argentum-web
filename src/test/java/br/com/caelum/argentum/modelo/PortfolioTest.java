@@ -44,8 +44,8 @@ public class PortfolioTest {
         portfolio.adicionarNegociacao(negociacao2);
         
         BigDecimal valorEsperado = new BigDecimal("1000.00")
-            .add(negociacao1.getVolume())
-            .add(negociacao2.getVolume());
+            .add(BigDecimal.valueOf(negociacao1.getVolume()))
+            .add(BigDecimal.valueOf(negociacao2.getVolume()));
         
         assertEquals(valorEsperado, portfolio.calcularValorTotal());
     }
