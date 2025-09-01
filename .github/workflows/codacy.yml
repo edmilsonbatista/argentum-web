@@ -1,4 +1,4 @@
-name: Codacy Analysis
+name: Codacy Coverage
 
 on:
   push:
@@ -6,9 +6,9 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
-  
+
 jobs:
-  codacy-security-scan:
+  codacy_run-_overage:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
