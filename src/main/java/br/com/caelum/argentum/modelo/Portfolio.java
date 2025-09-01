@@ -24,7 +24,7 @@ public class Portfolio {
     public BigDecimal calcularValorTotal() {
         BigDecimal total = saldoInicial;
         for (Negociacao negociacao : negociacoes) {
-            total = total.add(negociacao.getVolume());
+            total = total.add(BigDecimal.valueOf(negociacao.getVolume()));
         }
         return total;
     }
