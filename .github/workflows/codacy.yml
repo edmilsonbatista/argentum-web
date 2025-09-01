@@ -28,7 +28,7 @@ jobs:
         bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r target/site/jacoco/jacoco.xml
       continue-on-error: true
       env:
-        CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_TOKEN }}
+        CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
         
     - name: Coverage upload status
       run: echo "Coverage report generated successfully - check Codacy dashboard if upload succeeded"
