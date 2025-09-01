@@ -29,7 +29,7 @@ jobs:
       run: |
         if [ -n "${{ secrets.DEEPSOURCE_DSN }}" ]; then
           curl https://deepsource.io/cli | sh
-          ./bin/deepsource report --analyzer test-coverage --key java --value-file target/site/jacoco/jacoco.xml
+          ./bin/deepsource report --analyzer test-coverage --key java --value-file target/site/jacoco/jacoco.xml || echo "DeepSource upload failed - check analyzer configuration"
         else
           echo "DEEPSOURCE_DSN not configured - skipping upload"
         fi
