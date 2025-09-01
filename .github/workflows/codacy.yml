@@ -24,11 +24,11 @@ jobs:
       run: mvn clean test -Dtest='**/modelo/*Test,**/indicadores/*Test,**/grafico/*Test,**/utils/*Test'
 
     - name: Upload coverage to Codacy
-      uses: codacy/codacy-coverage-reporter-action@v1
+      run: |
+        bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r target/site/jacoco/jacoco.xml
       continue-on-error: true
-      with:
-        project-token: ${{ secrets.CODACY_TOKEN }}
-        coverage-reports: target/site/jacoco/jacoco.xml
+      env:
+        CODACY_TOKEN: ${{ secrets.CODACY_TOKEN }}
         
     - name: Coverage upload status
       run: echo "Coverage report generated successfully - check Codacy dashboard if upload succeeded"
