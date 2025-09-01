@@ -1,0 +1,10 @@
+engines:
+  coverage:
+    enabled: true
+  duplication:
+    enabled: true
+    
+exclude_paths:
+  - "**/*.md"
+  - "target/**"
+  - ".github/**"
