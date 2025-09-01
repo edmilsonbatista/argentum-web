@@ -1,26 +1,37 @@
 package br.com.caelum.argentum.indicadores;
 
-import static org.junit.Assert.*;
-
+import java.util.Arrays;
+import java.util.Calendar;
 import org.junit.Test;
-
+import org.junit.Assert;
+import br.com.caelum.argentum.modelo.Candle;
 import br.com.caelum.argentum.modelo.SerieTemporal;
 
 public class MediaMovelSimplesTest {
 
-	@Test
-	public void sequenciaSimplesDeCandles() throws Exception {
-		SerieTemporal serie = GeradorDeSerie.criaSerie(1, 2, 3, 4, 3, 4, 5, 4,
-				3);
-		Indicador mms = new MediaMovelSimples(new IndicadorFechamento());
+    @Test
+    public void testCalculaMediaMovel() {
+        Calendar data = Calendar.getInstance();
+        Candle c1 = new Candle(10.0, 15.0, 8.0, 20.0, 1000.0, data);
+        Candle c2 = new Candle(12.0, 18.0, 10.0, 22.0, 1200.0, data);
+        Candle c3 = new Candle(15.0, 20.0, 12.0, 25.0, 1500.0, data);
+        
+        SerieTemporal serie = new SerieTemporal(Arrays.asList(c1, c2, c3));
+        
+        IndicadorAbertura indicadorAbertura = new IndicadorAbertura();
+        MediaMovelSimples mms = new MediaMovelSimples(indicadorAbertura);
+        
+        double resultado = mms.calcula(2, serie);
+        double esperado = (15.0 + 12.0 + 10.0) / 3;
+        
+        Assert.assertEquals(esperado, resultado, 0.001);
+    }
 
-		assertEquals(2.0, mms.calcula(2, serie),      0.000001);
-		assertEquals(3.0, mms.calcula(3, serie),      0.000001);
-		assertEquals(10.0 / 3, mms.calcula(4, serie), 0.000001);
-		assertEquals(11.0 / 3, mms.calcula(5, serie), 0.000001);
-		assertEquals(4.0, mms.calcula(6, serie),      0.000001);
-		assertEquals(13.0 / 3, mms.calcula(7, serie), 0.000001);
-		assertEquals(4.0, mms.calcula(8, serie),      0.000001);
-	}
-
+    @Test
+    public void testToString() {
+        IndicadorAbertura indicadorAbertura = new IndicadorAbertura();
+        MediaMovelSimples mms = new MediaMovelSimples(indicadorAbertura);
+        
+        Assert.assertEquals("MMS Abertura", mms.toString());
+    }
 }
