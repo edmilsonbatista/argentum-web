@@ -23,7 +23,8 @@ jobs:
     - name: Build and test with coverage
       run: mvn clean test -Dtest='**/modelo/*Test,**/indicadores/*Test,**/grafico/*Test'
 
-    - name: Generate coverage report
-      run: |
-        echo "Coverage report generated at target/site/jacoco/jacoco.xml"
-        ls -la target/site/jacoco/ || echo "No coverage report found"
+    - name: Upload coverage to Codacy
+      uses: codacy/codacy-coverage-reporter-action@v1
+      with:
+        project-token: ${{ secrets.CODACY_TOKEN }}
+        coverage-reports: target/site/jacoco/jacoco.xml
