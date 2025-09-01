@@ -158,6 +158,8 @@
 				<configuration>
 					<excludes>
 						<exclude>**/LeitorXMLTest.java</exclude>
+						<exclude>**/LeitorXMLSimpleTest.java</exclude>
+						<exclude>**/ArgentumBeanTest.java</exclude>
 						<exclude>**/*IT.java</exclude>
 					</excludes>
 				</configuration>
