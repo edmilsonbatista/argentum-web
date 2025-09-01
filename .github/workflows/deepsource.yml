@@ -27,7 +27,11 @@ jobs:
 
     - name: Report results to DeepSource
       run: |
-        curl https://deepsource.io/cli | sh
-        ./bin/deepsource report --analyzer test-coverage --key java --value-file target/site/jacoco/jacoco.xml
+        if [ -n "${{ secrets.DEEPSOURCE_DSN }}" ]; then
+          curl https://deepsource.io/cli | sh
+          ./bin/deepsource report --analyzer test-coverage --key java --value-file target/site/jacoco/jacoco.xml
+        else
+          echo "DEEPSOURCE_DSN not configured - skipping upload"
+        fi
       env:
         DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
