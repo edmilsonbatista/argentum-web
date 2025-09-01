@@ -23,7 +23,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Build and test with coverage
-      run: mvn clean test -Dtest='**/modelo/*Test,**/indicadores/*Test'
+      run: mvn clean test -Dtest='**/modelo/*Test,**/indicadores/*Test,**/grafico/*Test'
 
     - name: Report results to DeepSource
       run: |

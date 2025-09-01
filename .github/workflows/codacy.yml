@@ -21,7 +21,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Build and test with coverage
-      run: mvn clean test -Dtest='**/modelo/*Test,**/indicadores/*Test'
+      run: mvn clean test -Dtest='**/modelo/*Test,**/indicadores/*Test,**/grafico/*Test'
 
     - name: Upload coverage to Codacy
       uses: codacy/codacy-coverage-reporter-action@v1
