@@ -11,5 +11,4 @@ enabled = true
 name = "test-coverage"
 enabled = true
 
-[exclude_patterns]
-paths = ["**/*.md"]
+exclude_patterns = ["**/*.md"]
