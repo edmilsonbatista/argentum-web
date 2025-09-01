@@ -12,6 +12,4 @@ name = "test-coverage"
 enabled = true
 
 [exclude_patterns]
-paths = [
-  "**/*.md"
-]
+paths = ["**/*.md"]
