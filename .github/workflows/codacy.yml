@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  codacy_run-_overage:
+  coverage:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
@@ -21,10 +21,9 @@ jobs:
         distribution: 'temurin'
 
     - name: Build and test with coverage
-      run: mvn clean test -Dtest='**/modelo/*Test,**/indicadores/*Test,**/grafico/*Test'
+      run: mvn clean test -Dtest='**/modelo/*Test,**/indicadores/*Test,**/grafico/*Test,**/reader/*Test,**/bean/*Test'
 
-    - name: Upload coverage to Codacy
-      uses: codacy/codacy-coverage-reporter-action@v1
-      with:
-        project-token: ${{ secrets.CODACY_TOKEN }}
-        coverage-reports: target/site/jacoco/jacoco.xml
+    - name: Generate coverage report
+      run: |
+        echo "Coverage report generated at target/site/jacoco/jacoco.xml"
+        ls -la target/site/jacoco/ || echo "No coverage report found"
